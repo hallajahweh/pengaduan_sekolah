@@ -1,0 +1,87 @@
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    background:linear-gradient(135deg,#F4F7F6,#FDFDFD);
+    font-family:'Poppins',sans-serif;
+    color:#2C3E50;
+}
+
+/* HEADER */
+.header-school{
+    background:linear-gradient(135deg,#4A90E2,#357ABD);
+    color:white;
+    text-align:center;
+    padding:30px 0;
+}
+
+/* CONTAINER */
+.container{
+    max-width:1200px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+/* CARD */
+.card{
+    background:white;
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    margin-bottom:25px;
+    padding:20px;
+}
+
+/* HEADER CARD */
+.card-header{
+    background:#4A90E2;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+}
+
+/* WELCOME */
+.welcome-card{
+    background:linear-gradient(135deg,#4A90E2,#357ABD);
+    color:white;
+    text-align:center;
+}
+
+/* STAT */
+.stat-card{
+    text-align:center;
+    color:white;
+}
+
+.stat-card:nth-child(1){background:#4A90E2;}
+.stat-card:nth-child(2){background:#D4AF37;}
+.stat-card:nth-child(3){background:#FF6B6B;}
+.stat-card:nth-child(4){background:#10b981;}
+
+.stat-card h4{
+    font-size:2.5rem;
+}
+
+/* BUTTON */
+.btn-custom{
+    padding:12px 20px;
+    border-radius:10px;
+    text-decoration:none;
+    color:white;
+    margin:5px;
+    display:inline-block;
+}
+
+.btn-success{background:#10b981;}
+.btn-primary{background:#4A90E2;}
+.btn-danger{background:#FF6B6B;}
+
+.btn-custom:hover{
+    opacity:0.8;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#2C3E50;
+    color:white;
+}

@@ -1,0 +1,238 @@
+/* ========================================
+   ADMIN DASHBOARD - MODERN SOFT UI
+======================================== */
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    color: #1e293b;
+}
+
+/* ========================================
+   NAVBAR
+======================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    color: #4f46e5;
+    text-decoration: none;
+}
+
+.logo i {
+    margin-right: 8px;
+}
+
+.menu a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #64748b;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.menu a:hover,
+.menu a.active {
+    color: #4f46e5;
+}
+
+/* ========================================
+   CONTAINER
+======================================== */
+.container {
+    padding: 30px 40px;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+.header-section {
+    margin-bottom: 25px;
+}
+
+.main-title {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: #64748b;
+    margin-top: 5px;
+}
+
+/* ========================================
+   STAT CARDS
+======================================== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+.card h1 {
+    font-size: 28px;
+    color: #4f46e5;
+}
+
+/* ========================================
+   STATUS CARDS
+======================================== */
+.status-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.status-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 18px;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.status-card .icon {
+    font-size: 30px;
+}
+
+.status-content h3 {
+    font-size: 14px;
+}
+
+.status-content h2 {
+    font-size: 24px;
+    margin: 5px 0;
+}
+
+.status-content span {
+    font-size: 12px;
+}
+
+/* warna */
+.waiting {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+}
+
+.process {
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+}
+
+.done {
+    background: linear-gradient(135deg, #34d399, #10b981);
+}
+
+/* ========================================
+   CHARTS
+======================================== */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.chart-box {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.chart-box h4 {
+    margin-bottom: 15px;
+    color: #475569;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+}
+
+/* ========================================
+   QUICK STATS
+======================================== */
+.quick-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stat-item {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    font-size: 14px;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat-item i {
+    color: #4f46e5;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu {
+        margin-top: 10px;
+    }
+
+    .menu a {
+        display: block;
+        margin: 8px 0;
+    }
+
+    .container {
+        padding: 20px;
+    }
+}
