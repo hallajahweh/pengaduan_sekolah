@@ -1,83 +1,55 @@
 <?php
 
-require_once "models/user.php";
+require_once "config/koneksi.php";
 
-class AuthController{
+class AuthController {
 
-    // halaman login
-    function login(){
-        include "views/auth/login.php";
+    public function login() {
+        require_once "views/auth/login.php";
     }
 
-    // halaman register
-    function register(){
-        include "views/auth/register.php";
+    public function register() {
+        require_once "views/auth/register.php";
     }
 
-    // proses login
-    function doLogin(){
+    public function prosesLogin() {
+        global $conn;
 
-        session_start();
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
-        $username = trim($_POST['username'] ?? '');
-        $password = $_POST['password'] ?? '';
-        $role = $_POST['role'] ?? '';
+        $query = mysqli_query($conn, "SELECT * FROM users WHERE username='$username'");
 
-        $user = User::login($username, $password);
+        if (mysqli_num_rows($query) > 0) {
+            $data = mysqli_fetch_assoc($query);
 
-        if($user && $user['role'] === $role){
-            $_SESSION['user'] = $user;
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['role'] = $user['role'];
-            $_SESSION['email'] = $user['username'];
-            if($user['role'] === "siswa"){
-                $_SESSION['nis'] = $user['nis'];
+            if ($password == $data['password']) {
+                session_start();
+                $_SESSION['user'] = $data;
+
+                header("Location: index.php?url=siswa/dashboard");
+            } else {
+                echo "Password salah";
             }
-
-            if($role === "admin"){
-                header("Location: router.php?controller=admin&action=dashboard");
-            }else{
-                header("Location: router.php?controller=siswa&action=dashboard");
-            }
-            exit;
-        }else{
-            echo "<script>alert('Login gagal! Periksa username, password, atau role Anda.'); window.location='router.php?controller=auth&action=login';</script>";
-        }
-
-    }
-
-    // proses register
-    function doRegister(){
-
-        $username = trim($_POST['username'] ?? '');
-        $password = $_POST['password'] ?? '';
-        $role = $_POST['role'] ?? '';
-        $nis = trim($_POST['nis'] ?? '');
-        $nama = trim($_POST['nama'] ?? '');
-        $kelas = trim($_POST['kelas'] ?? '');
-
-        $success = User::register($username, $password, $role, $nis);
-
-        if($success){
-            // Jika siswa, create record di tabel siswa
-            if($role === 'siswa'){
-                User::createSiswa($nis, $nama, $kelas);
-            }
-            echo "<script>alert('Register berhasil! Silakan login'); window.location='router.php?controller=auth&action=login';</script>";
         } else {
-            echo "<script>alert('Register gagal! Silakan coba lagi.'); window.location='router.php?controller=auth&action=register';</script>";
+            echo "User tidak ditemukan";
         }
-
     }
 
-    // logout
-    function logout(){
+    public function prosesRegister() {
+        global $conn;
 
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        mysqli_query($conn, "INSERT INTO users(username,password) VALUES('$username','$password')");
+
+        header("Location: index.php?url=auth/login");
+    }
+
+    public function logout() {
         session_start();
         session_destroy();
-
-        header("Location:index.php");
+        header("Location: index.php?url=auth/login");
     }
-
 }
