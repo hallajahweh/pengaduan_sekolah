@@ -1,9 +1,14 @@
 FROM php:8.2-apache
 
-COPY . /var/www/html/
+WORKDIR /var/www/html
 
-RUN docker-php-ext-install mysqli
+COPY . /var/www/html
 
 RUN a2enmod rewrite
+
+RUN echo "<Directory /var/www/html>\n\
+    AllowOverride All\n\
+</Directory>" > /etc/apache2/conf-available/custom.conf \
+    && a2enconf custom.conf
 
 EXPOSE 80
