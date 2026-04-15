@@ -1,3 +1,5 @@
+<?php
+
 $host = getenv("MYSQLHOST") ?: getenv("DB_HOST");
 $user = getenv("MYSQLUSER") ?: getenv("DB_USER");
 $pass = getenv("MYSQLPASSWORD") ?: getenv("DB_PASS");
@@ -5,7 +7,7 @@ $db   = getenv("MYSQLDATABASE") ?: getenv("DB_NAME");
 $port = getenv("MYSQLPORT") ?: 3306;
 
 if (!$host || !$user) {
-    die("ENV DATABASE tidak ditemukan di Railway");
+    die("DATABASE ENV belum diset di Railway");
 }
 
 $conn = mysqli_connect($host, $user, $pass, $db, $port);
