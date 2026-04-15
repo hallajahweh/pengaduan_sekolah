@@ -1,12 +1,13 @@
 <?php
+$host = getenv("mysql.railway.internalmysql.railway.internal");
+$user = getenv("root");
+$pass = getenv("NOnibzDGnoEcPvtdxCYpOHSNqwqGoBeL");
+$db   = getenv("railway");
+$port = getenv("3306");
 
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "pengaduan_sekolah";
+$conn = mysqli_connect($host, $user, $pass, $db, $port);
 
-$conn = mysqli_connect($host,$user,$pass,$db);
-
-if(!$conn){
-    die("Koneksi gagal");
+if (!$conn) {
+    die("Koneksi gagal: " . mysqli_connect_error());
 }
+?>
