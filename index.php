@@ -1,2 +1,3 @@
 <?php
-echo "RAILWAY OK - PHP RUNNING SUCCESS";
+
+echo "RAILWAY PHP SUCCESS";
