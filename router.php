@@ -1,3 +1,6 @@
+<?php
+
+// kalau kamu mau pisahkan routing, bisa pakai ini
 $url = $_GET['url'] ?? 'auth/login';
 $url = explode('/', $url);
 
