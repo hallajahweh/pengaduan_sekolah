@@ -4,15 +4,13 @@ WORKDIR /var/www/html
 
 COPY . /var/www/html
 
-# aktifkan rewrite untuk MVC routing
+# aktifkan apache rewrite
 RUN a2enmod rewrite
 
-# izinkan .htaccess jalan
-RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
-
-# permission
+# set permission aman
 RUN chown -R www-data:www-data /var/www/html
 
+# pastikan apache jalan stabil
 EXPOSE 80
 
 CMD ["apache2-foreground"]
