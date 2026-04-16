@@ -7,12 +7,17 @@ COPY . /var/www/html
 # aktifkan rewrite
 RUN a2enmod rewrite
 
-# 🔥 FIX MPM CONFLICT (INI KUNCI ERROR KAMU)
+# 🔥 paksa hanya prefork (hindari konflik MPM)
 RUN a2dismod mpm_event || true
 RUN a2dismod mpm_worker || true
-RUN a2enmod mpm_prefork
+RUN a2enmod mpm_prefork || true
 
-# permission
+# install dependency penting (biar apache stabil)
+RUN apt-get update && apt-get install -y \
+    libapache2-mod-php \
+    && rm -rf /var/lib/apt/lists/*
+
+# permission aman
 RUN chown -R www-data:www-data /var/www/html
 
 EXPOSE 80
